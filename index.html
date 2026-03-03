@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoHarvest - AI-Powered Tax Loss Harvesting for Crypto Traders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: #0a0f1c;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 28, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(64, 224, 208, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #40e0d0, #00d4aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #40e0d0;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #40e0d0, #00d4aa);
+            color: #0a0f1c;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(64, 224, 208, 0.1), transparent);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #40e0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-button {
+            background: linear-gradient(45deg, #40e0d0, #00d4aa);
+            color: #0a0f1c;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(64, 224, 208, 0.4);
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: #40e0d0;
+            border: 2px solid #40e0d0;
+            padding: 14px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background: rgba(64, 224, 208, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(64, 224, 208, 0.05), transparent);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(64, 224, 208, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #40e0d0;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: rgba(10, 15, 28, 0.8);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #40e0d0, #00d4aa);
+            color: #0a0f1c;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .step p {
+            color: #b0b0b0;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #40e0d0;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #40e0d0;
+            margin-bottom: 10px;
+        }
+
+        .plan-period {
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            color: #b0b0b0;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .plan-features li:before {
+            content: "✓";
+            color: #40e0d0;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(64, 224, 208, 0.05), transparent);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .testimonial-text {
+            color: #ffffff;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #40e0d0, #00d4aa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0f1c;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-answer {
+            padding: 0 30px 20px;
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 15, 28, 0.95);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(64, 224, 208, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #40e0d0;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #b0b0b0;
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: #40e0d0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(64, 224, 208, 0.1);
+            color: #b0b0b0;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(64, 224, 208, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .email-input::placeholder {
+            color: #b0b0b0;
+        }
+
+        .email-button {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #40e0d0, #00d4aa);
+            color: #0a0f1c;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .email-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CryptoHarvest</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#pricing" class="cta-button">Start Free Trial</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Maximize Your Crypto Tax Savings with AI</h1>
+            <p>Automated tax loss harvesting for cryptocurrency portfolios. Let our AI identify optimal sell/rebuy opportunities while keeping you compliant with wash sale rules.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="primary-button">Start 30-Day Free Trial</a>
+                <a href="#how-it-works" class="secondary-button">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose CryptoHarvest?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered Optimization</h3>
+                    <p>Our advanced algorithms analyze your entire portfolio across multiple exchanges and wallets, identifying the best tax loss harvesting opportunities in real-time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Wash Sale Rule Compliance</h3>
+                    <p>Automatically avoid wash sale violations with our sophisticated tracking system that monitors all your transactions across different platforms and timeframes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Multi-Exchange Support</h3>
+                    <p>Connect to 20+ major exchanges and wallet providers including Coinbase, Binance, Kraken, and hardware wallets for comprehensive portfolio monitoring.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Tax Reporting</h3>
+                    <p>Generate IRS-compliant tax reports instantly with detailed transaction histories, cost basis calculations, and realized gains/losses summaries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Connect Your Accounts</h3>
+                    <p>Securely link your exchange accounts and wallets using read-only API keys. We never have access to your funds.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Analysis</h3>
+                    <p>Our AI continuously monitors your portfolio, identifying assets with unrealized losses that can be harvested for tax benefits.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Smart Recommendations</h3>
+                    <p>Receive personalized recommendations for optimal sell/rebuy strategies that maximize tax savings while avoiding wash sale rules.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Automated Execution</h3>
+                    <p>Execute trades automatically or manually based on your preferences, with full compliance tracking and tax reporting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="plan-name">Starter</h3>
+                    <div class="plan-price">$29</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Portfolio up to $50K</li>
+                        <li>3 exchange connections</li>
+                        <li>Basic tax reports</li>
+                        <li>Email support</li>
+                        <li>Wash sale monitoring</li>
+                    </ul>
+                    <a href="#" class="primary-button">Start Free Trial</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3 class="plan-name">Professional</h3>
+                    <div class="plan-price">$79</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Portfolio up to $250K</li>
+                        <li>Unlimited exchange connections</li>
+                        <li>Advanced tax optimization</li>
+                        <li>Priority support</li>
+                        <li>Automated execution</li>
+                        <li>DeFi protocol support</li>
+                    </ul>
+                    <a href="#" class="primary-button">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">$199</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li>Unlimited portfolio size</li>
+                        <li>White-glove onboarding</li>
+                        <li>Custom integrations</li>
+                        <li>Dedicated account manager</li>
+                        <li>Advanced analytics</li>
+                        <li>API access</li>
+                    </ul>
+                    <a href="#" class="primary-button">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"CryptoHarvest saved me over $15,000 in taxes last year. The AI recommendations are spot-on and I never have to worry about wash sale violations anymore."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <h4>Michael Kim</h4>
+                            <p>Day Trader, Portfolio: $180K</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"As someone who trades across 6 different exchanges, keeping track of tax implications was a nightmare. CryptoHarvest handles everything automatically."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SR</div>
+                        <div class="author-info">
+                            <h4>Sarah Rodriguez</h4>
+                            <p>Crypto Investor, Portfolio: $95K</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The peace of mind knowing I'm maximizing my tax efficiency while staying compliant is worth every penny. Highly recommend to any serious crypto trader."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DJ</div>
+                        <div class="author-info">
+                            <h4>David Johnson</h4>
+                            <p>Portfolio Manager, Portfolio: $320K</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">How does CryptoHarvest avoid wash sale violations?</div>
+                    <div class="faq-answer">Our AI tracks all your transactions across connected accounts and ensures any rebuy orders are placed after the required 31-day period, or uses substantially identical assets to maintain market exposure while staying compliant.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is my portfolio data secure?</div>
+                    <div class="faq-answer">Yes, we use bank-level encryption and only require read-only API access to your accounts. We never have access to your funds or private keys, and all data is stored securely with SOC 2 compliance.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Which exchanges and wallets are supported?</div>
+                    <div class="faq-answer">We support 20+ major exchanges including Coinbase, Binance, Kraken, FTX, and KuCoin, plus popular wallets like MetaMask, Ledger, and Trezor. We're constantly adding new integrations.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How much can I expect to save in taxes?</div>
+                    <div class="faq-answer">Tax savings vary based on your trading activity and tax bracket, but our users typically save 15-30% on their crypto tax liability. The average user with a $100K portfolio saves $8,000-12,000 annually.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use this for DeFi positions?</div>
+                    <div class="faq-answer">Yes, our Professional and Enterprise plans include DeFi protocol support for popular platforms like Uniswap, Compound, and Aave. We track LP positions, yield farming, and staking rewards.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CryptoHarvest</h3>
+                    <p>AI-powered tax loss harvesting for cryptocurrency portfolios. Maximize your tax savings while staying compliant.</p>
+                    <div class="email-form">
+                        <input type="email" class="email-input" placeholder="Enter your email">
+                        <button class="email-button">Subscribe</button>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <p><a href="#features">Features</a></p>
+                    <p><a href="#pricing">Pricing</a></p>
+                    <p><a href="#">API Documentation</a></p>
+                    <p><a href="#">Integrations</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p><a href="#faq">FAQ</a></p>
+                    <p><a href="#">Help Center</a></p>
+                    <p><a href="#">Contact Support</a></p>
+                    <p><a href="#">Tax Resources</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p><a href="#">Privacy Policy</a></p>
+                    <p><a href="#">Terms of Service</a></p>
+                    <p><a href="#">Cookie Policy</a></p>
+                    <p><a href="#">Compliance</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CryptoHarvest. All rights reserved. This service does not constitute tax advice. Consult a tax professional for your specific situation.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
