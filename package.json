@@ -1,0 +1,16 @@
+{
+  "name": "ai-tax-loss-harvesting-for-retail-crypto-traders",
+  "version": "0.1.0",
+  "description": "Automated tax loss harvesting specifically for cryptocurrency portfolios, targeting retail traders who struggle with complex crypto tax calculations. Uses AI to identify optimal sell/rebuy opportuniti",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "ai",
+    "saas",
+    "the-firm"
+  ],
+  "author": "The Firm — AI Venture Studio",
+  "license": "MIT"
+}
